@@ -1,0 +1,13 @@
+version: '3.1'
+
+services:
+  webapp:
+    image: lucassartori/web5
+    container_name: web5_app
+    ports:
+      - 3000:3000      
+    restart: always
+    volumes:
+      - ./www:/var/www
+    tty: true
+  
