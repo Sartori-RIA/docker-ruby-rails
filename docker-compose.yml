@@ -2,12 +2,12 @@ version: '3.1'
 
 services:
   webapp:
-    image: lucassartori/web5
+    image: lucassartori/web5:1.0
     container_name: web5_app
     ports:
-      - 3000:3000      
-    restart: always
+      - 3000:3000    # share ports, localhost:docker
+    restart: always  # star when computer start
     volumes:
-      - ./www:/var/www
+      - ./www:/var/www  # share volumes local:docker
     tty: true
   

@@ -10,6 +10,8 @@
 + Ruby 2.5.1
 + Rails 5.2.1
 + Bundler 1.16.3
++ Node 10.8.0
++ Npm 6.2.0
 
 ## Ports exposes
 
