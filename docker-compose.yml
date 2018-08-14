@@ -6,7 +6,7 @@ services:
     container_name: web5_app
     ports:
       - 3000:3000    # share ports, localhost:docker
-    restart: always  # star when computer start
+    restart: always  # start when computer start
     volumes:
       - ./www:/var/www  # share volumes local:docker
     tty: true
