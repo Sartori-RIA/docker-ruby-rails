@@ -10,7 +10,7 @@ services:
     volumes:
       - ./www:/var/www  # share volumes local:docker
     tty: true
-    depends_on:
+    links:
       - db
 
   db:

@@ -12,6 +12,7 @@
 + Bundler 1.16.3
 + Node 10.8.0
 + Npm 6.2.0
++ Postgres
 
 ## Ports exposes
 
@@ -28,3 +29,25 @@
     + `docker-compose kill`
     + `docker-compose rm`
     + `docker-compose up -d`
+
++ inside rails projec, open file `config/database.yml`
+
+```yml
+    default: &default
+        adapter: postgresql
+        encoding: utf8
+        username: <%= ENV['db.username'] %>
+        password: <%= ENV['db.password'] %>
+        host: localhost
+``` 
+
++ change to 
+ ```yml
+    default: &default
+        adapter: postgresql
+        encoding: utf8
+        username: <%= ENV['db.username'] %>
+        password: <%= ENV['db.password'] %>
+        host: db
+``` 
+
