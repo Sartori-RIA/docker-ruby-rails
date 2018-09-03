@@ -6,8 +6,24 @@ services:
     container_name: web5_app
     ports:
       - 3000:3000    # share ports, localhost:docker
-    restart: always  # start when computer start
+#    restart: always  # start when computer start
     volumes:
       - ./www:/var/www  # share volumes local:docker
     tty: true
+    depends_on:
+      - db
+
+  db:
+    image: postgres
+    container_name: web5_db
+    ports:
+      - 5432:5432    # share ports, localhost:docker
+#    restart: always  # start when computer start
+    volumes:
+      - ./db:/var/lib/postgresql/data  # share volumes local:docker
+    tty: true
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+        
   
