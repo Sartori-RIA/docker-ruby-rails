@@ -1,5 +1,5 @@
 # FROM ubuntu:18.04
-FROM ruby:2.5.1
+FROM ruby:2.5.2
 MAINTAINER Lucas Sartori <faltou.criatividade0@gmail.com>
 
 ENV TZ=America/Sao_Paulo
