@@ -12,10 +12,10 @@
     + Node latest
     + Npm latest
 
-+ RVM
++ Ruby
     + Ruby 2.4.6
     + Rails latest
-+ Bundler latest
+    + Bundler latest
 
 + Front-end
     + Typescript
