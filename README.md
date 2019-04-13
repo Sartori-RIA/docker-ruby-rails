@@ -7,47 +7,60 @@
 
 ## Whats this image contains:
 
-+ Ruby 2.5.1
-+ Rails 5.2.1
-+ Bundler 1.16.3
-+ Node 10.8.0
-+ Npm 6.2.0
-+ Postgres
+
++ NVM
+    + Node latest
+    + Npm latest
+
++ RVM
+    + Ruby 2.4.6
+    + Rails latest
++ Bundler latest
+
++ Front-end
+    + Typescript
+    + Sass
 
 ## Ports exposes
 
++ 80
 + 3000
 + 3306
-+ 80
++ 4200
 
-## Instructions
-
-+ clone this repository
-+ start container `docker-compose up -d`
-+ enter in container `docker exec -it CONTAINER_NAME /bin/bash`
-+ revert to the initial state of the container
-    + `docker-compose kill`
-    + `docker-compose rm`
-    + `docker-compose up -d`
-
-+ inside rails projec, open file `config/database.yml`
+## Docker Compose
 
 ```yml
-    default: &default
-        adapter: postgresql
-        encoding: utf8
-        username: <%= ENV['db.username'] %>
-        password: <%= ENV['db.password'] %>
-        host: localhost
-``` 
 
-+ change to 
- ```yml
-    default: &default
-        adapter: postgresql
-        encoding: utf8
-        username: <%= ENV['db.username'] %>
-        password: <%= ENV['db.password'] %>
-        host: db
-``` 
+version: "3.1"
 
+services:
+  webapp:
+    image: lucassartori/web5:1.0
+    container_name: my_rails_app
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/var/www
+    tty: true
+    links:
+      - db
+
+  db:
+    image: postgres
+    container_name: my_rails_db
+    ports:
+      - 5432:5432
+    volumes:
+      - ./db:/var/lib/postgresql/data
+    tty: true
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+
+  adminer:
+    image: adminer
+    container_name: rails_adminer
+    ports:
+      - 8080:8080
+```

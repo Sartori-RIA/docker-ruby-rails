@@ -1,29 +1,31 @@
-version: '3.1'
+version: "3.1"
 
 services:
   webapp:
     image: lucassartori/web5:1.0
-    container_name: web5_app
+    container_name: my_rails_app
     ports:
-      - 3000:3000    # share ports, localhost:docker
-#    restart: always  # start when computer start
+      - 3000:3000
     volumes:
-      - ./www:/var/www  # share volumes local:docker
+      - .:/var/www
     tty: true
     links:
       - db
 
   db:
     image: postgres
-    container_name: web5_db
+    container_name: my_rails_db
     ports:
-      - 5432:5432    # share ports, localhost:docker
-#    restart: always  # start when computer start
+      - 5432:5432
     volumes:
-      - ./db:/var/lib/postgresql/data  # share volumes local:docker
+      - ./db:/var/lib/postgresql/data
     tty: true
     environment:
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_USER=postgres
-        
-  
+
+  adminer:
+    image: adminer
+    container_name: rails_adminer
+    ports:
+      - 8080:8080
