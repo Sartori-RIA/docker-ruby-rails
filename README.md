@@ -36,7 +36,7 @@ version: "3.1"
 
 services:
   webapp:
-    image: lucassartori/web5:1.0
+    image: lucassartori/docker-ruby-rails
     container_name: my_rails_app
     ports:
       - 3000:3000
